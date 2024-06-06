@@ -1,15 +1,17 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
-public class Estudantes extends Usuario {
+public class Estudante extends Usuario {
     private String curso;
 
-    public Estudantes() {
+    public Estudante() {
     }
 
-    public Estudantes(String nome, String cpf, String matricula, LocalDate dataNascimento) {
+    public Estudante(String nome, String cpf, String matricula, String dataNascimento, String curso) {
         super(nome, cpf, matricula, dataNascimento);
+        this.curso = curso;
     }
 
     public String getCurso() {

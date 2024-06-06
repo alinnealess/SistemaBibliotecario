@@ -1,2 +1,6 @@
-package model;public enum EstadoLivro {
+package model;
+
+public enum EstadoLivro {
+    DISPONIVEL,
+    EMPRESTADO
 }
