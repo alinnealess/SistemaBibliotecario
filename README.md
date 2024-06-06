@@ -76,6 +76,3 @@ O sistema lida com situações comuns de erro, como:
 - Livro não encontrado.
 - Limite de empréstimos atingido.
 - Entrada inválida.
-
-## Licença
-Este projeto é licenciado sob a Licença MIT - veja o arquivo LICENSE.md para detalhes.
