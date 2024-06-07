@@ -154,8 +154,25 @@ public class Operacoes {
     // Método para exibir todos os usuários
     public void exibirTodosUsuarios() {
         List<Usuario> usuarios = bancoDAO.buscarUsuarios();
-        for (Usuario usuario : usuarios) {
-            System.out.println("Nome: " + usuario.getNome() + ", CPF: " + usuario.getCpf() + ", Matrícula: " + usuario.getMatricula() + ", Data de Nascimento: " + usuario.getDataNascimento());
+        if (usuarios.isEmpty()) {
+            System.out.println("Nenhum usuário cadastrado.");
+        } else {
+            for (Usuario usuario : usuarios) {
+                String tipoUsuario = "Desconhecido";
+                if (usuario instanceof Estudante) {
+                    tipoUsuario = "Estudante";
+                } else if (usuario instanceof Professor) {
+                    tipoUsuario = "Professor";
+                } else if (usuario instanceof Bibliotecario) {
+                    tipoUsuario = "Bibliotecário";
+                }
+
+                System.out.println("Nome: " + usuario.getNome() +
+                        ", CPF: " + usuario.getCpf() +
+                        ", Matrícula: " + usuario.getMatricula() +
+                        ", Data de Nascimento: " + usuario.getDataNascimento() +
+                        ", Tipo: " + tipoUsuario);
+            }
         }
     }
 
@@ -163,7 +180,7 @@ public class Operacoes {
     public void exibirTodosLivros() {
         List<Livro> livros = bancoDAO.buscarLivros();
         for (Livro livro : livros) {
-            System.out.println("Título: " + livro.getTitulo() + ", Autor: " + livro.getAutor() + ", Assunto: " + livro.getAssunto() + ", Ano de Lançamento: " + livro.getAnoLancamento() + ", Quantidade em Estoque: " + livro.getQtdEstoque() + ", Estado: " + livro.getEstado());
+            System.out.println("Título: " + livro.getTitulo() + ", Autor: " + livro.getAutor() + ", Assunto: " + livro.getAssunto() + ", Ano de Lançamento: " + livro.getAnoLancamento() + ", Quantidade em Estoque: " + livro.getQtdEstoque() + ".");
         }
     }
 }

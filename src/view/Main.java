@@ -1,11 +1,12 @@
 package view;
 
-import service.Operacoes;
-import model.*;
 import dao.BancoDAO;
+import model.*;
+import service.Operacoes;
 import utils.ErroTratamento;
-import java.util.Scanner;
+
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,20 +17,21 @@ public class Main {
 
         System.out.println("### Bem-vindo(a) ao SIS-BIB!");
 
-        // Autenticação simplificada com loop até credenciais corretas
+        // Autenticação de usuários bibliotecários
         while (!autenticado) {
             System.out.print("Login: ");
             String login = scanner.nextLine();
             System.out.print("Senha: ");
             String senha = scanner.nextLine();
 
-            if (login.equals("admin") && senha.equals("admin")) {
+            if (autenticarBibliotecario(login, senha)) {
                 autenticado = true;
                 System.out.println("*** Autenticação bem-sucedida! ***");
             } else {
-                System.out.println("\n*** Autenticação falhou. Tente novamente. ***\n");
+                System.out.println("*** Autenticação falhou. Tente novamente. ***");
             }
         }
+
 
         while (true) {
             System.out.println("\nEscolha uma operação:");
@@ -274,5 +276,19 @@ public class Main {
                     break;
             }
         }
+    }
+
+    // Método de autenticação de bibliotecário
+    private static boolean autenticarBibliotecario(String login, String senha) {
+        List<Usuario> usuarios = BancoDAO.getInstance().buscarUsuarios();
+        for (Usuario u : usuarios) {
+            if (u instanceof Bibliotecario) {
+                Bibliotecario biblio = (Bibliotecario) u;
+                if (biblio.getLogin().equals(login) && biblio.getSenha().equals(senha)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

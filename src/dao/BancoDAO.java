@@ -16,6 +16,7 @@ public class BancoDAO {
         usuarios = new ArrayList<>();
         emprestimosAtivos = new ArrayList<>();
         carregarDados();
+        verificarBibliotecarioPadrao();
     }
 
     public static BancoDAO getInstance() {
@@ -98,6 +99,25 @@ public class BancoDAO {
             livros = new ArrayList<>();
             usuarios = new ArrayList<>();
             emprestimosAtivos = new ArrayList<>();
+        }
+    }
+
+    private void verificarBibliotecarioPadrao() {
+        boolean bibliotecarioPadraoExistente = false;
+        for (Usuario usuario : usuarios) {
+            if (usuario instanceof Bibliotecario) {
+                Bibliotecario biblio = (Bibliotecario) usuario;
+                if (biblio.getLogin().equals("admin") && biblio.getSenha().equals("admin")) {
+                    bibliotecarioPadraoExistente = true;
+                    break;
+                }
+            }
+        }
+
+        if (!bibliotecarioPadraoExistente) {
+            Bibliotecario bibliotecarioPadrao = new Bibliotecario("Administrador", "00000000000", "0000", "2000-01-01", "admin", "admin");
+            usuarios.add(bibliotecarioPadrao);
+            salvarDados();
         }
     }
 }
