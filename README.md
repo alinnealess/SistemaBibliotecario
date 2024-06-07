@@ -24,7 +24,7 @@ O sistema foi criado para gerenciar livros e usuários em uma biblioteca, permit
     - Enum `EstadoLivro`: Enumeração para representar os estados de um livro (DISPONIVEL, EMPRESTADO).
   
 - **dao:** Inclui a classe `BancoDAO`, que implementa o padrão Singleton para gerenciamento da coleção de livros, usuários e empréstimos.
-- **service:** Contém a classe `Operacoes`, que oferece métodos para manipulação dos livros, usuários e empréstimos da biblioteca.
+- **controller:** Contém a classe `Operacoes`, que oferece métodos para manipulação dos livros, usuários e empréstimos da biblioteca.
 - **utils:** Contém a classe `ErroTratamento`, que oferece métodos estáticos para o tratamento de erros do sistema.
 - **view:** Contém a classe principal `Main`, que implementa a interface do usuário.
 

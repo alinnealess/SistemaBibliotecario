@@ -2,7 +2,7 @@ package view;
 
 import dao.BancoDAO;
 import model.*;
-import service.Operacoes;
+import controller.Operacoes;
 import utils.ErroTratamento;
 
 import java.util.List;
